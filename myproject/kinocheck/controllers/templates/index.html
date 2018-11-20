@@ -1,0 +1,26 @@
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" 
+  integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+ {% extends "layout.html" %} {% block content %} 
+<div> <form method="post" action="/api/v1/send" enctype="multipart/form-data">
+  <input type="file" id="img_file" name="img_file" class="siimple-btn siimple-btn--green">
+  <input type="submit" value="送信" class="siimple-btn siimple-btn--green">
+</form>
+</div>
+  {% if img_url %}
+<div>
+<img src="{{ img_url }}" class="img-fluid rounded" style="max-height: 5200px;">
+</div>
+  {% endif %}
+  {% if filename %}
+<form method="post" action="/api/v1/check/{{ filename }}">
+  <input type="submit" value="クリックすると、毒きのこ判定が始まります！!" class="siimple-btn siimple-btn--green">
+</form>
+  {% endif %}
+  {% if nyan_type %}
+<div>
+{{ nyan_type }}
+</div>
+  {% endif %}
+{% endblock %}
